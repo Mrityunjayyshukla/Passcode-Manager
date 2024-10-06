@@ -23,4 +23,3 @@ ThemeData darkMode = ThemeData(
   useMaterial3: true,
 );
 
-TextEditingController usernameEditingController = TextEditingController();

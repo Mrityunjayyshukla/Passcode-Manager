@@ -36,23 +36,23 @@ class ListPage extends StatefulWidget {
 }
 
 class _ListPageState extends State<ListPage> {
-  String _username='';
+  String? _username;
   // This is the list of all the records which are there.
   List<Map<String, String>> records = [];
 
   // This will initially show the list of the records
   @override
   void initState() {
-    super.initState();
-    _loadRecords();
     _loadUsername();
+    _loadRecords();
+    super.initState();
   }
 
-  void _loadUsername() async {
+  // Load the username
+  Future<void> _loadUsername() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    String savedUsername = prefs.getString('Mrityunjay')??'';
     setState(() {
-      _username=savedUsername;
+      _username = prefs.getString('username');
     });
   }
 
@@ -144,12 +144,15 @@ class _ListPageState extends State<ListPage> {
         ),
         actions: [
           IconButton(
-            onPressed: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context)=>const SettingsPage()));
-            }, 
-            icon: const Icon(
-              Icons.settings,
-            ),
+           onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => SettingsPage()),
+              ).then((_) {
+                _loadUsername(); // Refresh the username after returning
+              });
+            },
+          icon: Icon(Icons.settings),
           )
         ],
       ),
@@ -179,10 +182,8 @@ class _ListPageState extends State<ListPage> {
             ),
             const SizedBox(height: 16),
             Text(
-              usernameEditingController.text.isEmpty
-              ?"Hello, Mrityunjay!"
-              :"Hello, $_username!",
-              style: const TextStyle(
+              _username != null ? "Hello, $_username !": "No Username",
+              style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
               ),
