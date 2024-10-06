@@ -27,8 +27,8 @@ class _EditEntryState extends State<EditEntry> {
 
   @override
   Widget build(BuildContext context) {
-    bool _obscureText = true;
-    bool _obscureConfirmText=true;
+    bool obscureText = true;
+    bool obscureConfirmText=true;
     return Scaffold(
       backgroundColor: Colors.white,
 
@@ -143,12 +143,12 @@ class _EditEntryState extends State<EditEntry> {
                             child: const Icon(Icons.visibility),
                             onTap: () {
                               setState(() {
-                                _obscureText = !_obscureText;
+                                obscureText = !obscureText;
                               });
                             }),
                         border: InputBorder.none,
                       ),
-                      obscureText: _obscureText,
+                      obscureText: obscureText,
                     ),
                   ),
                   const SizedBox(height: 16),
@@ -175,12 +175,12 @@ class _EditEntryState extends State<EditEntry> {
                             child: const Icon(Icons.visibility),
                             onTap: () {
                               setState(() {
-                                _obscureText = !_obscureText;
+                                obscureConfirmText = !obscureConfirmText;
                               });
                             }),
                         border: InputBorder.none,
                       ),
-                      obscureText: _obscureConfirmText,
+                      obscureText: obscureConfirmText,
                     ),
                   ),
                   const SizedBox(height: 32),
