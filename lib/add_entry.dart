@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:passcodemanager/color_palette.dart';
 
 // ignore: must_be_immutable
 class AddEntry extends StatefulWidget {
@@ -22,18 +23,21 @@ class _AddEntryState extends State<AddEntry> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: LightModeColorPalette().backgroundColor,
 
       // Appbar
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.primary,
-        title: const Text(
+        backgroundColor: LightModeColorPalette().panelColor,
+        centerTitle: true,
+        title: Text(
           "Add Entry",
           style: TextStyle(
             fontWeight: FontWeight.bold,
-            fontSize: 24,
+            fontSize: 20,
+            color: DarkModeColorPalette().textColor,
           ),
         ),
+        leading: IconButton(onPressed: ()=>Navigator.pop(context), icon: Icon(Icons.arrow_back, color: DarkModeColorPalette().textColor,)),
       ),
 
       // Body
@@ -42,43 +46,49 @@ class _AddEntryState extends State<AddEntry> {
         child: Center(
           child: Container(
             decoration: BoxDecoration(
-              color: Theme.of(context).colorScheme.primary,
+              color: LightModeColorPalette().panelColor,
               borderRadius: BorderRadius.circular(16),
             ),
-            padding: const EdgeInsets.all(16),
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
             child: SingleChildScrollView(
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
+                  Text(
                     "Title",
                     style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
+                      color: DarkModeColorPalette().textColor,
                     ),
                   ),
                   const SizedBox(height: 4),
                   Divider(
                     thickness: 2,
-                    color: Theme.of(context).colorScheme.tertiary
+                    color: DarkModeColorPalette().textColor,
                   ),
                   const SizedBox(height: 8),
-                  const Text(
+                  Text(
                     "Title",
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
+                      color: DarkModeColorPalette().textColor,
                     ),
                   ),
                   const SizedBox(height: 8),
                   Container(
                     padding: const EdgeInsets.symmetric(horizontal: 8),
                     decoration: BoxDecoration(
-                      border: Border.all(width: 2,color: Theme.of(context).colorScheme.tertiary),
+                      border: Border.all(width: 2,color: DarkModeColorPalette().textColor,),
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: TextField(
+                      style: TextStyle(
+                        color: DarkModeColorPalette().textColor,
+                        fontWeight: FontWeight.w500,
+                      ),
                       controller: titleController,
                       decoration: const InputDecoration(
                         border: InputBorder.none,
@@ -86,48 +96,58 @@ class _AddEntryState extends State<AddEntry> {
                     ),
                   ),
                   const SizedBox(height: 16),
-                  const Text(
+                  Text(
                     "Email or Username",
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
+                      color: DarkModeColorPalette().textColor,
                     ),
                   ),
                   const SizedBox(height: 8),
                   Container(
                     padding: const EdgeInsets.symmetric(horizontal: 8),
                     decoration: BoxDecoration(
-                      border: Border.all(width: 2,color: Theme.of(context).colorScheme.tertiary),
+                      border: Border.all(width: 2,color: DarkModeColorPalette().textColor,),
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: TextField(
                       controller: emailController,
+                      style: TextStyle(
+                        color: DarkModeColorPalette().textColor,
+                        fontWeight: FontWeight.w500,
+                      ),
                       decoration: const InputDecoration(
                         border: InputBorder.none,
                       ),
                     ),
                   ),
                   const SizedBox(height: 16),
-                  const Text(
+                  Text(
                     "Password",
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
+                      color: DarkModeColorPalette().textColor,
                     ),
                   ),
                   const SizedBox(height: 8),
                   Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 8),
+                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                     decoration: BoxDecoration(
-                      border: Border.all(width: 2,color: Theme.of(context).colorScheme.tertiary),
+                      border: Border.all(width: 2,color: DarkModeColorPalette().textColor,),
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: TextField(
                       obscureText: _obscureText,
                       controller: passwordController,
+                      style: TextStyle(
+                        color: DarkModeColorPalette().textColor,
+                        fontWeight: FontWeight.w500,
+                      ),
                       decoration: InputDecoration(
                         suffixIcon: GestureDetector(
-                            child: const Icon(Icons.visibility),
+                            child: _obscureText? Icon(Icons.visibility,color: DarkModeColorPalette().textColor,) : Icon(Icons.visibility_off,color: DarkModeColorPalette().textColor,),
                             onTap: () {
                               setState(() {
                                 _obscureText = !_obscureText;
@@ -138,26 +158,31 @@ class _AddEntryState extends State<AddEntry> {
                     ),
                   ),
                   const SizedBox(height: 16),
-                  const Text(
+                  Text(
                     "Confirm Password",
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
+                      color: DarkModeColorPalette().textColor,
                     ),
                   ),
                   const SizedBox(height: 8),
                   Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 8),
+                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                     decoration: BoxDecoration(
-                      border: Border.all(width: 2,color: Theme.of(context).colorScheme.tertiary),
+                      border: Border.all(width: 2,color: DarkModeColorPalette().textColor,),
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: TextField(
                       obscureText: _obscureConfirmText,
                       controller: confirmPasswordController,
+                      style: TextStyle(
+                        color: DarkModeColorPalette().textColor,
+                        fontWeight: FontWeight.w500,
+                      ),
                       decoration: InputDecoration(
                         suffixIcon: GestureDetector(
-                            child: const Icon(Icons.visibility),
+                            child: _obscureConfirmText? Icon(Icons.visibility,color: DarkModeColorPalette().textColor,) : Icon(Icons.visibility_off,color: DarkModeColorPalette().textColor,),
                             onTap: () {
                               setState(() {
                                 _obscureConfirmText = !_obscureConfirmText;
@@ -170,10 +195,10 @@ class _AddEntryState extends State<AddEntry> {
                   const SizedBox(height: 32),
                   Center(
                     child: Container(
-                      padding: EdgeInsets.symmetric(vertical: 4,horizontal: 16),
+                      padding: const EdgeInsets.symmetric(vertical: 4,horizontal: 16),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(40),
-                        color: Theme.of(context).colorScheme.secondary
+                        color: LightModeColorPalette().backgroundColor,
                       ),
                       child: IconButton(
                         onPressed: (){
@@ -198,12 +223,12 @@ class _AddEntryState extends State<AddEntry> {
                           mainAxisSize: MainAxisSize.min,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Icon(Icons.save, color: Theme.of(context).colorScheme.tertiary,),
+                            Icon(Icons.save, color: LightModeColorPalette().textColor,),
                             const SizedBox(width: 8),
                             Text(
                               "Add Entry",
                               style: TextStyle(
-                                color: Theme.of(context).colorScheme.tertiary,
+                                color: LightModeColorPalette().textColor,
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,
                               ),
