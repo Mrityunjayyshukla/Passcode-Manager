@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -34,14 +36,14 @@ class _SettingsPageState extends State<SettingsPage> {
           children: [
             TextField(
               controller: _controller,
-              decoration: InputDecoration(labelText: 'Enter Username'),
+              decoration: const InputDecoration(labelText: 'Enter Username'),
             ),
             ElevatedButton(
               onPressed: () async {
                 await saveUsername(_controller.text);
                 Navigator.pop(context); // Navigate back to the home page
               },
-              child: Text('Save Username'),
+              child: const Text('Save Username'),
             ),
           ],
         ),

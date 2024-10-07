@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:passcodemanager/add_entry.dart';
-import 'package:passcodemanager/components.dart';
 import 'package:passcodemanager/edit_entry.dart';
 import 'package:passcodemanager/passkey.dart';
 import 'package:passcodemanager/settings_page.dart';
@@ -18,12 +17,10 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      theme: lightMode,
-      darkTheme: darkMode,
-      home: const ListPage(),
+      home: ListPage(),
     );
   }
 }
@@ -130,7 +127,7 @@ class _ListPageState extends State<ListPage> {
       isEmptyRecord=false;
     }
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.background,
+      backgroundColor: Colors.white,
 
       // Appbar
       appBar: AppBar(
@@ -147,12 +144,12 @@ class _ListPageState extends State<ListPage> {
            onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => SettingsPage()),
+                MaterialPageRoute(builder: (context) => const SettingsPage()),
               ).then((_) {
                 _loadUsername(); // Refresh the username after returning
               });
             },
-          icon: Icon(Icons.settings),
+          icon: const Icon(Icons.settings),
           )
         ],
       ),
@@ -183,7 +180,7 @@ class _ListPageState extends State<ListPage> {
             const SizedBox(height: 16),
             Text(
               _username != null ? "Hello, $_username !": "No Username",
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
               ),

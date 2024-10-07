@@ -46,9 +46,9 @@ class _PasskeyBuildSheetState extends State<PasskeyBuildSheet> {
   Widget build(BuildContext context) {
     final record=widget.records[widget.index];
     return Container(
-      decoration: BoxDecoration(
-        borderRadius: const BorderRadius.only(topLeft: Radius.circular(24),topRight: Radius.circular(24)),
-        color: Theme.of(context).colorScheme.background,
+      decoration: const BoxDecoration(
+        borderRadius: BorderRadius.only(topLeft: Radius.circular(24),topRight: Radius.circular(24)),
+        color: Colors.white,
       ),
       padding: const EdgeInsets.all(16),
       child: Wrap(

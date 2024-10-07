@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 // ignore: must_be_immutable
 class AddEntry extends StatefulWidget {
   final Function(Map<String, String>) onAdd;
-  AddEntry({super.key, required this.onAdd});
+  const AddEntry({super.key, required this.onAdd});
 
   @override
   State<AddEntry> createState() => _AddEntryState();
@@ -22,7 +22,7 @@ class _AddEntryState extends State<AddEntry> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.background,
+      backgroundColor: Colors.white,
 
       // Appbar
       appBar: AppBar(
