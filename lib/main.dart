@@ -7,9 +7,7 @@ import 'package:passcodemanager/settings_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
-  runApp(
-    const MyApp(),
-  );
+  runApp(const MyApp(),);
 }
 
 class MyApp extends StatelessWidget {
@@ -18,10 +16,12 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      home: ListPage(),
+      theme: lightMode,
+      darkTheme: darkMode,
+      home: const ListPage(),
     );
   }
 }
@@ -128,11 +128,11 @@ class _ListPageState extends State<ListPage> {
       isEmptyRecord=false;
     }
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).colorScheme.primary,
 
       // Appbar
       appBar: AppBar(
-        backgroundColor: LightModeColorPalette().backgroundColor,
+        backgroundColor: Theme.of(context).colorScheme.secondary,
         title: const Text(
           "Passcode Manager",
           style: TextStyle(
