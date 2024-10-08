@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:passcodemanager/add_entry.dart';
+import 'package:passcodemanager/color_palette.dart';
 import 'package:passcodemanager/edit_entry.dart';
 import 'package:passcodemanager/passkey.dart';
 import 'package:passcodemanager/settings_page.dart';
@@ -131,7 +132,7 @@ class _ListPageState extends State<ListPage> {
 
       // Appbar
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.primary,
+        backgroundColor: LightModeColorPalette().backgroundColor,
         title: const Text(
           "Passcode Manager",
           style: TextStyle(
