@@ -24,22 +24,34 @@ class _EditEntryState extends State<EditEntry> {
     confirmPasswordController = TextEditingController(text: "");
     super.initState();
   }
+  bool obscureText = true;
+  bool obscureConfirmText=true;
 
   @override
   Widget build(BuildContext context) {
-    bool obscureText = true;
-    bool obscureConfirmText=true;
+    
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).colorScheme.primary,
 
       // Appbar
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.primary,
-        title: const Text(
+        centerTitle: true,
+        backgroundColor: Theme.of(context).colorScheme.secondary,
+        title: Text(
           "Edit Entry",
           style: TextStyle(
             fontWeight: FontWeight.bold,
-            fontSize: 24,
+            fontSize: 20,
+            color: Theme.of(context).colorScheme.onSecondary,
+          ),
+        ),
+        leading: IconButton(
+          onPressed: (){
+            Navigator.pop(context);
+          }, 
+          icon: Icon(
+            Icons.arrow_back,
+            color: Theme.of(context).colorScheme.onSecondary,
           ),
         ),
       ),
@@ -50,7 +62,7 @@ class _EditEntryState extends State<EditEntry> {
         child: Center(
           child: Container(
             decoration: BoxDecoration(
-              color: Theme.of(context).colorScheme.primary,
+              color: Theme.of(context).colorScheme.secondary,
               borderRadius: BorderRadius.circular(16),
             ),
             padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
@@ -59,24 +71,26 @@ class _EditEntryState extends State<EditEntry> {
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
+                  Text(
                     "Title",
                     style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
+                      color: Theme.of(context).colorScheme.onSecondary,
                     ),
                   ),
                   const SizedBox(height: 4),
                   Divider(
                     thickness: 2,
-                    color: Theme.of(context).colorScheme.tertiary,
+                    color: Theme.of(context).colorScheme.onSecondary,
                   ),
                   const SizedBox(height: 8),
-                  const Text(
+                  Text(
                     "Title",
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
+                      color: Theme.of(context).colorScheme.onSecondary,
                     ),
                   ),
                   const SizedBox(height: 8),
@@ -85,7 +99,7 @@ class _EditEntryState extends State<EditEntry> {
                     decoration: BoxDecoration(
                       border: Border.all(
                           width: 2,
-                          color: Theme.of(context).colorScheme.tertiary),
+                          color: Theme.of(context).colorScheme.onSecondary),
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: TextField(
@@ -93,14 +107,19 @@ class _EditEntryState extends State<EditEntry> {
                       decoration: const InputDecoration(
                         border: InputBorder.none,
                       ),
+                      style: TextStyle(
+                        color: Theme.of(context).colorScheme.onSecondary,
+                        fontWeight: FontWeight.w500,
+                      ),
                     ),
                   ),
                   const SizedBox(height: 16),
-                  const Text(
+                  Text(
                     "Email or Username",
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
+                      color: Theme.of(context).colorScheme.onSecondary,
                     ),
                   ),
                   const SizedBox(height: 8),
@@ -109,7 +128,7 @@ class _EditEntryState extends State<EditEntry> {
                     decoration: BoxDecoration(
                       border: Border.all(
                           width: 2,
-                          color: Theme.of(context).colorScheme.tertiary),
+                          color: Theme.of(context).colorScheme.onSecondary),
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: TextField(
@@ -117,30 +136,40 @@ class _EditEntryState extends State<EditEntry> {
                       decoration: const InputDecoration(
                         border: InputBorder.none,
                       ),
+                      style: TextStyle(
+                        color: Theme.of(context).colorScheme.onSecondary,
+                        fontWeight: FontWeight.w500,
+                      ),
                     ),
                   ),
                   const SizedBox(height: 16),
-                  const Text(
+                  Text(
                     "Password",
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
+                      color: Theme.of(context).colorScheme.onSecondary,
                     ),
                   ),
                   const SizedBox(height: 8),
                   Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 8),
+                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                     decoration: BoxDecoration(
-                      border: Border.all(
-                          width: 2,
-                          color: Theme.of(context).colorScheme.tertiary),
+                      border: Border.all(width: 2,color: Theme.of(context).colorScheme.onSecondary,),
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: TextField(
+                      obscureText: obscureText,
                       controller: passwordController,
+                      style: TextStyle(
+                        color: Theme.of(context).colorScheme.onSecondary,
+                        fontWeight: FontWeight.w500,
+                      ),
                       decoration: InputDecoration(
                         suffixIcon: GestureDetector(
-                            child: const Icon(Icons.visibility),
+                            child: obscureText
+                              ? Icon(Icons.visibility,color: Theme.of(context).colorScheme.onSecondary,) 
+                              : Icon(Icons.visibility_off, color: Theme.of(context).colorScheme.onSecondary,),
                             onTap: () {
                               setState(() {
                                 obscureText = !obscureText;
@@ -148,31 +177,36 @@ class _EditEntryState extends State<EditEntry> {
                             }),
                         border: InputBorder.none,
                       ),
-                      obscureText: obscureText,
                     ),
                   ),
                   const SizedBox(height: 16),
-                  const Text(
+                  Text(
                     "Confirm Password",
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
+                      color: Theme.of(context).colorScheme.onSecondary,
                     ),
                   ),
                   const SizedBox(height: 8),
                   Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 8),
+                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                     decoration: BoxDecoration(
-                      border: Border.all(
-                          width: 2,
-                          color: Theme.of(context).colorScheme.tertiary),
+                      border: Border.all(width: 2, color: Theme.of(context).colorScheme.onSecondary,),
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: TextField(
+                      obscureText: obscureConfirmText,
                       controller: confirmPasswordController,
+                      style: TextStyle(
+                        color: Theme.of(context).colorScheme.onSecondary,
+                        fontWeight: FontWeight.w500,
+                      ),
                       decoration: InputDecoration(
                         suffixIcon: GestureDetector(
-                            child: const Icon(Icons.visibility),
+                            child: obscureConfirmText
+                              ? Icon(Icons.visibility, color: Theme.of(context).colorScheme.onSecondary,) 
+                              : Icon(Icons.visibility_off, color: Theme.of(context).colorScheme.onSecondary,),
                             onTap: () {
                               setState(() {
                                 obscureConfirmText = !obscureConfirmText;
@@ -180,7 +214,6 @@ class _EditEntryState extends State<EditEntry> {
                             }),
                         border: InputBorder.none,
                       ),
-                      obscureText: obscureConfirmText,
                     ),
                   ),
                   const SizedBox(height: 32),
@@ -190,7 +223,7 @@ class _EditEntryState extends State<EditEntry> {
                           vertical: 4, horizontal: 16),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(32),
-                        color: Theme.of(context).colorScheme.secondary,
+                        color: Theme.of(context).colorScheme.primary,
                       ),
                       child: IconButton(
                         onPressed: () {

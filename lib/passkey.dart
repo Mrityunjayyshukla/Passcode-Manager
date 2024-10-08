@@ -46,17 +46,21 @@ class _PasskeyBuildSheetState extends State<PasskeyBuildSheet> {
   Widget build(BuildContext context) {
     final record=widget.records[widget.index];
     return Container(
-      decoration: const BoxDecoration(
-        borderRadius: BorderRadius.only(topLeft: Radius.circular(24),topRight: Radius.circular(24)),
-        color: Colors.white,
+      decoration: BoxDecoration(
+        borderRadius: const BorderRadius.only(topLeft: Radius.circular(24),topRight: Radius.circular(24)),
+        color: Theme.of(context).colorScheme.primary,
       ),
       padding: const EdgeInsets.all(16),
       child: Wrap(
         alignment: WrapAlignment.center,
         children: [
-          const Text(
+          Text(
             "Enter the Passkey",
-            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            style: TextStyle(
+              fontSize: 24, 
+              fontWeight: FontWeight.bold,
+              color: Theme.of(context).colorScheme.tertiary,
+            ),
           ),
           Container(
             padding: const EdgeInsets.all(16),
@@ -68,14 +72,15 @@ class _PasskeyBuildSheetState extends State<PasskeyBuildSheet> {
                   children: [
                     Container(
                       decoration: BoxDecoration(
-                        border: Border.all(width: 2, color: Theme.of(context).colorScheme.tertiary),
+                        border: Border.all(width: 4, color: Theme.of(context).colorScheme.tertiary),
                         borderRadius: BorderRadius.circular(16),
                       ),
                       height: 68,
                       width: 64,
                       child: TextFormField(
+                        cursorColor: Theme.of(context).colorScheme.secondary,
                         decoration: const InputDecoration(
-                          border: InputBorder.none
+                          border: InputBorder.none,
                         ),
                         onChanged: (value){
                           _checkValue1(value);
@@ -84,7 +89,7 @@ class _PasskeyBuildSheetState extends State<PasskeyBuildSheet> {
                           }
                         },
                         textAlign: TextAlign.center,
-                        style: Theme.of(context).textTheme.headlineMedium,
+                        style: Theme.of(context).textTheme.headlineLarge,
                         keyboardType: TextInputType.number,
                         inputFormatters: [
                           LengthLimitingTextInputFormatter(1),
@@ -95,12 +100,13 @@ class _PasskeyBuildSheetState extends State<PasskeyBuildSheet> {
 
                     Container(
                       decoration: BoxDecoration(
-                        border: Border.all(width: 2, color: Theme.of(context).colorScheme.tertiary),
+                        border: Border.all(width: 4, color: Theme.of(context).colorScheme.tertiary),
                         borderRadius: BorderRadius.circular(16),
                       ),
                       height: 68,
                       width: 64,
                       child: TextFormField(
+                        cursorColor: Theme.of(context).colorScheme.secondary,
                         decoration: const InputDecoration(
                           border: InputBorder.none
                         ),
@@ -122,12 +128,13 @@ class _PasskeyBuildSheetState extends State<PasskeyBuildSheet> {
 
                     Container(
                       decoration: BoxDecoration(
-                        border: Border.all(width: 2, color: Theme.of(context).colorScheme.tertiary),
+                        border: Border.all(width: 4, color: Theme.of(context).colorScheme.tertiary),
                         borderRadius: BorderRadius.circular(16),
                       ),
                       height: 68,
                       width: 64,
                       child: TextFormField(
+                        cursorColor: Theme.of(context).colorScheme.secondary,
                         decoration: const InputDecoration(
                           border: InputBorder.none
                         ),
@@ -149,12 +156,13 @@ class _PasskeyBuildSheetState extends State<PasskeyBuildSheet> {
 
                     Container(
                       decoration: BoxDecoration(
-                        border: Border.all(width: 2, color: Theme.of(context).colorScheme.tertiary),
+                        border: Border.all(width: 4, color: Theme.of(context).colorScheme.tertiary),
                         borderRadius: BorderRadius.circular(16),
                       ),
                       height: 68,
                       width: 64,
                       child: TextFormField(
+                        cursorColor: Theme.of(context).colorScheme.secondary,
                         decoration: const InputDecoration(
                           border: InputBorder.none
                         ),
@@ -196,7 +204,7 @@ class _PasskeyBuildSheetState extends State<PasskeyBuildSheet> {
               child: Text(
                 "Enter",
                 style: TextStyle(
-                  color: Theme.of(context).colorScheme.tertiary,
+                  color: Theme.of(context).colorScheme.onSecondary,
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ),

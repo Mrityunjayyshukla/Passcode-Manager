@@ -27,17 +27,17 @@ class _AddEntryState extends State<AddEntry> {
 
       // Appbar
       appBar: AppBar(
-        backgroundColor: LightModeColorPalette().panelColor,
+        backgroundColor: Theme.of(context).colorScheme.secondary,
         centerTitle: true,
         title: Text(
           "Add Entry",
           style: TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 20,
-            color: DarkModeColorPalette().textColor,
+            color: Theme.of(context).colorScheme.onSecondary,
           ),
         ),
-        leading: IconButton(onPressed: ()=>Navigator.pop(context), icon: Icon(Icons.arrow_back, color: DarkModeColorPalette().textColor,)),
+        leading: IconButton(onPressed: () => Navigator.pop(context), icon: Icon(Icons.arrow_back, color: Theme.of(context).colorScheme.onSecondary,)),
       ),
 
       // Body
@@ -46,7 +46,7 @@ class _AddEntryState extends State<AddEntry> {
         child: Center(
           child: Container(
             decoration: BoxDecoration(
-              color: LightModeColorPalette().panelColor,
+              color: Theme.of(context).colorScheme.secondary,
               borderRadius: BorderRadius.circular(16),
             ),
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
@@ -60,13 +60,13 @@ class _AddEntryState extends State<AddEntry> {
                     style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
-                      color: DarkModeColorPalette().textColor,
+                      color: Theme.of(context).colorScheme.onSecondary,
                     ),
                   ),
                   const SizedBox(height: 4),
                   Divider(
                     thickness: 2,
-                    color: DarkModeColorPalette().textColor,
+                    color: Theme.of(context).colorScheme.onSecondary,
                   ),
                   const SizedBox(height: 8),
                   Text(
@@ -74,19 +74,19 @@ class _AddEntryState extends State<AddEntry> {
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
-                      color: DarkModeColorPalette().textColor,
+                      color: Theme.of(context).colorScheme.onSecondary,
                     ),
                   ),
                   const SizedBox(height: 8),
                   Container(
                     padding: const EdgeInsets.symmetric(horizontal: 8),
                     decoration: BoxDecoration(
-                      border: Border.all(width: 2,color: DarkModeColorPalette().textColor,),
+                      border: Border.all(width: 2,color: Theme.of(context).colorScheme.onSecondary,),
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: TextField(
                       style: TextStyle(
-                        color: DarkModeColorPalette().textColor,
+                        color: Theme.of(context).colorScheme.onSecondary,
                         fontWeight: FontWeight.w500,
                       ),
                       controller: titleController,
@@ -101,20 +101,20 @@ class _AddEntryState extends State<AddEntry> {
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
-                      color: DarkModeColorPalette().textColor,
+                      color: Theme.of(context).colorScheme.onSecondary,
                     ),
                   ),
                   const SizedBox(height: 8),
                   Container(
                     padding: const EdgeInsets.symmetric(horizontal: 8),
                     decoration: BoxDecoration(
-                      border: Border.all(width: 2,color: DarkModeColorPalette().textColor,),
+                      border: Border.all(width: 2,color: Theme.of(context).colorScheme.onSecondary,),
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: TextField(
                       controller: emailController,
                       style: TextStyle(
-                        color: DarkModeColorPalette().textColor,
+                        color: Theme.of(context).colorScheme.onSecondary,
                         fontWeight: FontWeight.w500,
                       ),
                       decoration: const InputDecoration(
@@ -128,26 +128,28 @@ class _AddEntryState extends State<AddEntry> {
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
-                      color: DarkModeColorPalette().textColor,
+                      color: Theme.of(context).colorScheme.onSecondary,
                     ),
                   ),
                   const SizedBox(height: 8),
                   Container(
                     padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                     decoration: BoxDecoration(
-                      border: Border.all(width: 2,color: DarkModeColorPalette().textColor,),
+                      border: Border.all(width: 2,color: Theme.of(context).colorScheme.onSecondary,),
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: TextField(
                       obscureText: _obscureText,
                       controller: passwordController,
                       style: TextStyle(
-                        color: DarkModeColorPalette().textColor,
+                        color: Theme.of(context).colorScheme.onSecondary,
                         fontWeight: FontWeight.w500,
                       ),
                       decoration: InputDecoration(
                         suffixIcon: GestureDetector(
-                            child: _obscureText? Icon(Icons.visibility,color: DarkModeColorPalette().textColor,) : Icon(Icons.visibility_off,color: DarkModeColorPalette().textColor,),
+                            child: _obscureText
+                              ? Icon(Icons.visibility,color: Theme.of(context).colorScheme.onSecondary,) 
+                              : Icon(Icons.visibility_off, color: Theme.of(context).colorScheme.onSecondary,),
                             onTap: () {
                               setState(() {
                                 _obscureText = !_obscureText;
@@ -163,26 +165,28 @@ class _AddEntryState extends State<AddEntry> {
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
-                      color: DarkModeColorPalette().textColor,
+                      color: Theme.of(context).colorScheme.onSecondary,
                     ),
                   ),
                   const SizedBox(height: 8),
                   Container(
                     padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                     decoration: BoxDecoration(
-                      border: Border.all(width: 2,color: DarkModeColorPalette().textColor,),
+                      border: Border.all(width: 2, color: Theme.of(context).colorScheme.onSecondary,),
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: TextField(
                       obscureText: _obscureConfirmText,
                       controller: confirmPasswordController,
                       style: TextStyle(
-                        color: DarkModeColorPalette().textColor,
+                        color: Theme.of(context).colorScheme.onSecondary,
                         fontWeight: FontWeight.w500,
                       ),
                       decoration: InputDecoration(
                         suffixIcon: GestureDetector(
-                            child: _obscureConfirmText? Icon(Icons.visibility,color: DarkModeColorPalette().textColor,) : Icon(Icons.visibility_off,color: DarkModeColorPalette().textColor,),
+                            child: _obscureConfirmText
+                              ? Icon(Icons.visibility, color: Theme.of(context).colorScheme.onSecondary,) 
+                              : Icon(Icons.visibility_off, color: Theme.of(context).colorScheme.onSecondary,),
                             onTap: () {
                               setState(() {
                                 _obscureConfirmText = !_obscureConfirmText;
@@ -198,7 +202,7 @@ class _AddEntryState extends State<AddEntry> {
                       padding: const EdgeInsets.symmetric(vertical: 4,horizontal: 16),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(40),
-                        color: LightModeColorPalette().backgroundColor,
+                        color: Theme.of(context).colorScheme.primary,
                       ),
                       child: IconButton(
                         onPressed: (){
@@ -223,12 +227,12 @@ class _AddEntryState extends State<AddEntry> {
                           mainAxisSize: MainAxisSize.min,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Icon(Icons.save, color: LightModeColorPalette().textColor,),
+                            Icon(Icons.save, color: Theme.of(context).colorScheme.tertiary,),
                             const SizedBox(width: 8),
                             Text(
                               "Add Entry",
                               style: TextStyle(
-                                color: LightModeColorPalette().textColor,
+                                color: Theme.of(context).colorScheme.tertiary,
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,
                               ),

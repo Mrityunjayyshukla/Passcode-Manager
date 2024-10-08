@@ -133,13 +133,15 @@ class _ListPageState extends State<ListPage> {
       // Appbar
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.secondary,
-        title: const Text(
+        title: Text(
           "Passcode Manager",
           style: TextStyle(
             fontWeight: FontWeight.bold,
-            fontSize: 24,
+            fontSize: 20,
+            color: Theme.of(context).colorScheme.onSecondary,
           ),
         ),
+        centerTitle: true,
         actions: [
           IconButton(
            onPressed: () {
@@ -150,7 +152,10 @@ class _ListPageState extends State<ListPage> {
                 _loadUsername(); // Refresh the username after returning
               });
             },
-          icon: const Icon(Icons.settings),
+          icon: Icon(
+            Icons.settings,
+            color: Theme.of(context).colorScheme.onSecondary,
+          ),
           )
         ],
       ),
@@ -160,146 +165,170 @@ class _ListPageState extends State<ListPage> {
         onPressed: (){
           Navigator.push(context, MaterialPageRoute(builder: (context)=>AddEntry(onAdd: _addRecord,)));
         },
-        backgroundColor: Theme.of(context).colorScheme.primary,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(32),
+        ),
+        backgroundColor: Theme.of(context).colorScheme.secondary,
         child: Icon(
           Icons.add,
-          color: Theme.of(context).colorScheme.tertiary,
+          color: Theme.of(context).colorScheme.onSecondary,
         ),
       ),
 
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            const Text(
-              "Passcode Manager is an app where you can store you passwords securely. This app is perfect for you if you always forget your passwords",
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w500,
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Text(
+                "Passcode Manager is an app where you can store you passwords securely. This app is perfect for you if you always forget your passwords",
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                  color: Theme.of(context).colorScheme.tertiary,
+                ),
+                textAlign: TextAlign.center,
               ),
-            ),
-            const SizedBox(height: 16),
-            Text(
-              _username != null ? "Hello, $_username !": "No Username",
-              style: const TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
+              const SizedBox(height: 16),
+              Text(
+                _username != null ? "Hello, $_username ! 😊": "No Username",
+                style: const TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-            ),
-            const SizedBox(height: 16),
-            (isEmptyRecord==true) 
-            ? const Text(
-              "No Record Found",
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
+              const SizedBox(height: 16),
+              Divider(
+                color: Theme.of(context).colorScheme.tertiary,
               ),
-            )
-            : SizedBox(
-              height: MediaQuery.of(context).size.height-243,
-              child: ListView.separated(
-                physics: const BouncingScrollPhysics(),
-                itemCount: records.length,
-                itemBuilder: (context, index){
-                  final record=records[index];
-                  return GestureDetector(
-                    child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(16),
-                        color: Theme.of(context).colorScheme.primary,
-                      ),
-                      padding: const EdgeInsets.symmetric(vertical: 8,horizontal: 16),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                "${record['Title']}",
-                                style: const TextStyle(
-                                  fontSize: 24,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              Row(
-                                children: [
-                                  GestureDetector(
-                                    onTap: (){_navigateToEditPage(record);},
-                                    child: const Icon(Icons.edit),
-                                  ),
-                                  const SizedBox(width: 16),
-                                  GestureDetector(
-                                    onTap: (){_deleteRecord(index);},
-                                    child: const Icon(Icons.delete),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                          const SizedBox(height: 4),
-                          Divider(
-                            thickness: 2,
-                            color: Theme.of(context).colorScheme.tertiary,
-                          ),
-                          const SizedBox(height: 8),
-                          const Text(
-                            "Email or Username",
-                            style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          const SizedBox(height: 8),
-                          Text(
-                            "${record['Email']}",
-                            style: const TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                          const SizedBox(height: 16),
-                          const Text(
-                            "Password",
-                            style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          const SizedBox(height: 8),
-                          const Text(
-                            "********",
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                          const SizedBox(height: 16),
-                        ],
-                      ),
-                    ),
+              const SizedBox(height: 16),
 
-                    onTap: (){
-                      showModalBottomSheet(
-                        shape: const RoundedRectangleBorder(
-                          borderRadius: BorderRadius.vertical(top: Radius.circular(25)),
+              (isEmptyRecord==true) 
+              ? Text(
+                "No Record Found",
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Theme.of(context).colorScheme.tertiary
+                ),
+              )
+              : SizedBox(
+                height: MediaQuery.of(context).size.height-243,
+                child: ListView.separated(
+                  physics: const BouncingScrollPhysics(),
+                  itemCount: records.length,
+                  itemBuilder: (context, index){
+                    final record=records[index];
+                    return GestureDetector(
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(16),
+                          color: Theme.of(context).colorScheme.secondary,
                         ),
-                        backgroundColor: Colors.purple[50],
-                        isScrollControlled: true,
-                        context: context, 
-                        builder: (BuildContext context){
-                          return PasskeyBuildSheet(index: index, records: records);
-                        },
-                      );
-                    },
-                  );
-                }, 
-                separatorBuilder: (BuildContext context, int index) {
-                  return const SizedBox(height: 16);
-                },
+                        padding: const EdgeInsets.symmetric(vertical: 8,horizontal: 16),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  "${record['Title']}",
+                                  style: TextStyle(
+                                    fontSize: 24,
+                                    fontWeight: FontWeight.bold,
+                                    color: Theme.of(context).colorScheme.onSecondary,
+                                  ),
+                                ),
+                                Row(
+                                  children: [
+                                    GestureDetector(
+                                      onTap: (){_navigateToEditPage(record);},
+                                      child: Icon(
+                                        Icons.edit,
+                                        color: Theme.of(context).colorScheme.onSecondary,
+                                      ),
+                                    ),
+                                    const SizedBox(width: 16),
+                                    GestureDetector(
+                                      onTap: (){_deleteRecord(index);},
+                                      child: Icon(
+                                        Icons.delete,
+                                        color: Theme.of(context).colorScheme.onSecondary,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                            const SizedBox(height: 4),
+                            Divider(
+                              thickness: 2,
+                              color: Theme.of(context).colorScheme.onSecondary,
+                            ),
+                            const SizedBox(height: 8),
+                            Text(
+                              "Email or Username",
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                                color: Theme.of(context).colorScheme.onSecondary,
+                              ),
+                            ),
+                            const SizedBox(height: 8),
+                            Text(
+                              "${record['Email']}",
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w500,
+                                color: Theme.of(context).colorScheme.onSecondary,
+                              ),
+                            ),
+                            const SizedBox(height: 16),
+                            Text(
+                              "Password",
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                                color: Theme.of(context).colorScheme.onSecondary,
+                              ),
+                            ),
+                            const SizedBox(height: 8),
+                            Text(
+                              "********",
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w500,
+                                color: Theme.of(context).colorScheme.onSecondary,
+                              ),
+                            ),
+                            const SizedBox(height: 16),
+                          ],
+                        ),
+                      ),
+          
+                      onTap: (){
+                        showModalBottomSheet(
+                          shape: const RoundedRectangleBorder(
+                            borderRadius: BorderRadius.vertical(top: Radius.circular(25)),
+                          ),
+                          backgroundColor: Colors.purple[50],
+                          isScrollControlled: true,
+                          context: context, 
+                          builder: (BuildContext context){
+                            return PasskeyBuildSheet(index: index, records: records);
+                          },
+                        );
+                      },
+                    );
+                  }, 
+                  separatorBuilder: (BuildContext context, int index) {
+                    return const SizedBox(height: 16);
+                  },
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       )
     );

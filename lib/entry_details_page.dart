@@ -17,16 +17,21 @@ class RecordDetailsPage extends StatelessWidget {
             Navigator.pop(context);
             Navigator.pop(context);
           },
-          icon: const Icon(Icons.arrow_back),
+          icon: Icon(
+            Icons.arrow_back,
+            color: Theme.of(context).colorScheme.onSecondary,
+          ),
         ),
-        backgroundColor: Theme.of(context).colorScheme.primary,
-        title: const Text(
+        backgroundColor: Theme.of(context).colorScheme.secondary,
+        title: Text(
           "Passcode Manager",
           style: TextStyle(
             fontWeight: FontWeight.bold,
-            fontSize: 24,
+            fontSize: 20,
+            color: Theme.of(context).colorScheme.onSecondary
           ),
         ),
+        centerTitle: true,
       ),
 
       // Body
@@ -35,7 +40,7 @@ class RecordDetailsPage extends StatelessWidget {
         child: Center(
           child: Container(
             decoration: BoxDecoration(
-              color: Theme.of(context).colorScheme.primary,
+              color: Theme.of(context).colorScheme.secondary,
               borderRadius: BorderRadius.circular(16),
             ),
             padding: const EdgeInsets.all(16),
@@ -44,64 +49,71 @@ class RecordDetailsPage extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
+                  Text(
                     "Title",
                     style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
+                      color: Theme.of(context).colorScheme.onSecondary,
                     ),
                   ),
                   const SizedBox(height: 4),
                   Divider(
                     thickness: 2,
-                    color: Theme.of(context).colorScheme.tertiary,
+                    color: Theme.of(context).colorScheme.onSecondary,
                   ),
                   const SizedBox(height: 8),
-                  const Text(
+                  Text(
                     "Title",
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
+                      color: Theme.of(context).colorScheme.onSecondary,
                     ),
                   ),
                   const SizedBox(height: 8),
                   SelectableText(
                     record['Title']!,
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.w500,
+                      color: Theme.of(context).colorScheme.onSecondary,
                     ),
                   ),
                   const SizedBox(height: 16),
-                  const Text(
+                  Text(
                     "Email or Username",
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
+                      color: Theme.of(context).colorScheme.onSecondary,
                     ),
                   ),
                   const SizedBox(height: 8),
                   SelectableText(
                     record['Email']!,
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.w500,
+                      color: Theme.of(context).colorScheme.onSecondary,
                     ),
                   ),
                   const SizedBox(height: 16),
-                  const Text(
+                  Text(
                     "Password",
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
+                      color: Theme.of(context).colorScheme.onSecondary,
                     ),
                   ),
                   const SizedBox(height: 8),
                   SelectableText(
                     record['Password']!,
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.w500,
+                      color: Theme.of(context).colorScheme.onSecondary,
                     ),
                   ),
                   const SizedBox(height: 16),
