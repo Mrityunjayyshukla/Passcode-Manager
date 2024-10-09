@@ -7,7 +7,7 @@ class RecordDetailsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).colorScheme.primary,
 
       // Appbar
       appBar: AppBar(

@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:passcodemanager/entry_details_page.dart';
 
+String appPassKey = "2505";
+
 class PasskeyBuildSheet extends StatefulWidget {
   List<Map<String, String>> records = [];
   int index;
@@ -13,41 +15,43 @@ class PasskeyBuildSheet extends StatefulWidget {
 }
 
 class _PasskeyBuildSheetState extends State<PasskeyBuildSheet> {
-  
-  
-  bool isPasskey=true;
+  bool isPasskey = true;
   var pin11;
   var pin12;
   var pin13;
   var pin14;
 
-  void _checkValue1(val){
+  void _checkValue1(val) {
     setState(() {
-      pin11=val;
+      pin11 = val;
     });
   }
-  void _checkValue2(val){
+
+  void _checkValue2(val) {
     setState(() {
-      pin12=val;
+      pin12 = val;
     });
   }
-  void _checkValue3(val){
+
+  void _checkValue3(val) {
     setState(() {
-      pin13=val;
+      pin13 = val;
     });
   }
-  void _checkValue4(val){
+
+  void _checkValue4(val) {
     setState(() {
-      pin14=val;
+      pin14 = val;
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    final record=widget.records[widget.index];
+    final record = widget.records[widget.index];
     return Container(
       decoration: BoxDecoration(
-        borderRadius: const BorderRadius.only(topLeft: Radius.circular(24),topRight: Radius.circular(24)),
+        borderRadius: const BorderRadius.only(
+            topLeft: Radius.circular(24), topRight: Radius.circular(24)),
         color: Theme.of(context).colorScheme.primary,
       ),
       padding: const EdgeInsets.all(16),
@@ -57,7 +61,7 @@ class _PasskeyBuildSheetState extends State<PasskeyBuildSheet> {
           Text(
             "Enter the Passkey",
             style: TextStyle(
-              fontSize: 24, 
+              fontSize: 24,
               fontWeight: FontWeight.bold,
               color: Theme.of(context).colorScheme.tertiary,
             ),
@@ -65,121 +69,55 @@ class _PasskeyBuildSheetState extends State<PasskeyBuildSheet> {
           Container(
             padding: const EdgeInsets.all(16),
             child: Padding(
-              padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+              padding: EdgeInsets.only(
+                  bottom: MediaQuery.of(context).viewInsets.bottom),
               child: Form(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Container(
-                      decoration: BoxDecoration(
-                        border: Border.all(width: 4, color: Theme.of(context).colorScheme.tertiary),
-                        borderRadius: BorderRadius.circular(16),
-                      ),
-                      height: 68,
-                      width: 64,
-                      child: TextFormField(
-                        cursorColor: Theme.of(context).colorScheme.secondary,
-                        decoration: const InputDecoration(
-                          border: InputBorder.none,
-                        ),
-                        onChanged: (value){
-                          _checkValue1(value);
-                          if(value.length==1){
-                            FocusScope.of(context).nextFocus();
-                          }
-                        },
-                        textAlign: TextAlign.center,
-                        style: Theme.of(context).textTheme.headlineLarge,
-                        keyboardType: TextInputType.number,
-                        inputFormatters: [
-                          LengthLimitingTextInputFormatter(1),
-                          FilteringTextInputFormatter.digitsOnly,
-                        ],
-                      ),
+                    passkeyBlock(
+                      context, 
+                      68, 
+                      64, 
+                      (value) {
+                        _checkValue1(value);
+                        if (value.length == 1) {
+                          FocusScope.of(context).nextFocus();
+                        }
+                      },
                     ),
-
-                    Container(
-                      decoration: BoxDecoration(
-                        border: Border.all(width: 4, color: Theme.of(context).colorScheme.tertiary),
-                        borderRadius: BorderRadius.circular(16),
-                      ),
-                      height: 68,
-                      width: 64,
-                      child: TextFormField(
-                        cursorColor: Theme.of(context).colorScheme.secondary,
-                        decoration: const InputDecoration(
-                          border: InputBorder.none
-                        ),
-                        onChanged: (value){
-                          _checkValue2(value);
-                          if(value.length==1){
-                            FocusScope.of(context).nextFocus();
-                          }
-                        },
-                        textAlign: TextAlign.center,
-                        style: Theme.of(context).textTheme.headlineMedium,
-                        keyboardType: TextInputType.number,
-                        inputFormatters: [
-                          LengthLimitingTextInputFormatter(1),
-                          FilteringTextInputFormatter.digitsOnly,
-                        ],
-                      ),
+                    passkeyBlock(
+                      context, 
+                      68, 
+                      64, 
+                      (value) {
+                        _checkValue2(value);
+                        if (value.length == 1) {
+                          FocusScope.of(context).nextFocus();
+                        }
+                      },
                     ),
-
-                    Container(
-                      decoration: BoxDecoration(
-                        border: Border.all(width: 4, color: Theme.of(context).colorScheme.tertiary),
-                        borderRadius: BorderRadius.circular(16),
-                      ),
-                      height: 68,
-                      width: 64,
-                      child: TextFormField(
-                        cursorColor: Theme.of(context).colorScheme.secondary,
-                        decoration: const InputDecoration(
-                          border: InputBorder.none
-                        ),
-                        onChanged: (value){
-                          _checkValue3(value);
-                          if(value.length==1){
-                            FocusScope.of(context).nextFocus();
-                          }
-                        },
-                        textAlign: TextAlign.center,
-                        style: Theme.of(context).textTheme.headlineMedium,
-                        keyboardType: TextInputType.number,
-                        inputFormatters: [
-                          LengthLimitingTextInputFormatter(1),
-                          FilteringTextInputFormatter.digitsOnly,
-                        ],
-                      ),
+                    passkeyBlock(
+                      context, 
+                      68, 
+                      64, 
+                      (value) {
+                        _checkValue3(value);
+                        if (value.length == 1) {
+                          FocusScope.of(context).nextFocus();
+                        }
+                      },
                     ),
-
-                    Container(
-                      decoration: BoxDecoration(
-                        border: Border.all(width: 4, color: Theme.of(context).colorScheme.tertiary),
-                        borderRadius: BorderRadius.circular(16),
-                      ),
-                      height: 68,
-                      width: 64,
-                      child: TextFormField(
-                        cursorColor: Theme.of(context).colorScheme.secondary,
-                        decoration: const InputDecoration(
-                          border: InputBorder.none
-                        ),
-                        onChanged: (value){
-                          _checkValue4(value);
-                          if(value.length==1){
-                            FocusScope.of(context).nextFocus();
-                          }
-                        },
-                        textAlign: TextAlign.center,
-                        style: Theme.of(context).textTheme.headlineMedium,
-                        keyboardType: TextInputType.number,
-                        inputFormatters: [
-                          LengthLimitingTextInputFormatter(1),
-                          FilteringTextInputFormatter.digitsOnly,
-                        ],
-                      ),
+                    passkeyBlock(
+                      context, 
+                      68, 
+                      64, 
+                      (value) {
+                        _checkValue4(value);
+                        if (value.length == 1) {
+                          FocusScope.of(context).nextFocus();
+                        }
+                      },
                     ),
                   ],
                 ),
@@ -187,20 +125,23 @@ class _PasskeyBuildSheetState extends State<PasskeyBuildSheet> {
             ),
           ),
           Container(
-            padding: const EdgeInsets.symmetric(vertical: 4,horizontal: 16),
+            padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 16),
             decoration: BoxDecoration(
-              color: Theme.of(context).colorScheme.secondary,
-              borderRadius: BorderRadius.circular(32)
-            ),
+                color: Theme.of(context).colorScheme.secondary,
+                borderRadius: BorderRadius.circular(32)),
             child: TextButton(
-              onPressed: (){
-                if (pin11+pin12+pin13+pin14=="2505"){
-                  isPasskey=true;
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>RecordDetailsPage(record:record)));
+              onPressed: () {
+                if (pin11 + pin12 + pin13 + pin14 == appPassKey) {
+                  isPasskey = true;
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              RecordDetailsPage(record: record)));
                 } else {
-                  isPasskey=false;
+                  isPasskey = false;
                 }
-              }, 
+              },
               child: Text(
                 "Enter",
                 style: TextStyle(
@@ -215,4 +156,28 @@ class _PasskeyBuildSheetState extends State<PasskeyBuildSheet> {
       ),
     );
   }
+}
+
+Widget passkeyBlock(BuildContext context, double height, double width, Function(String)? onChanged) {
+  return Container(
+    decoration: BoxDecoration(
+      border:
+          Border.all(width: 4, color: Theme.of(context).colorScheme.tertiary),
+      borderRadius: BorderRadius.circular(16),
+    ),
+    height: height,
+    width: width,
+    child: TextFormField(
+      cursorColor: Theme.of(context).colorScheme.secondary,
+      decoration: const InputDecoration(border: InputBorder.none),
+      onChanged: onChanged,
+      textAlign: TextAlign.center,
+      style: Theme.of(context).textTheme.headlineMedium,
+      keyboardType: TextInputType.number,
+      inputFormatters: [
+        LengthLimitingTextInputFormatter(1),
+        FilteringTextInputFormatter.digitsOnly,
+      ],
+    ),
+  );
 }

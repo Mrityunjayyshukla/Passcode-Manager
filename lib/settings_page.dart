@@ -1,4 +1,4 @@
-// ignore_for_file: use_build_context_synchronously
+// ignore_for_file: use_build_context_synchronously, prefer_typing_uninitialized_variables
 
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -11,6 +11,8 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _SettingsPageState extends State<SettingsPage> {
+  
+
   final TextEditingController _controller = TextEditingController();
 
   @override
@@ -43,7 +45,17 @@ class _SettingsPageState extends State<SettingsPage> {
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Text(
+              "Change Username",
+              style: TextStyle(
+                color: Theme.of(context).colorScheme.tertiary,
+                fontSize: 20,
+                fontWeight: FontWeight.w800,
+              ),
+            ),
+            const SizedBox(height: 16,),
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 8),
               decoration: BoxDecoration(
@@ -89,7 +101,7 @@ class _SettingsPageState extends State<SettingsPage> {
                       ),
                       const SizedBox(width: 8),
                       Text(
-                        "Add Entry",
+                        "Save Name",
                         style: TextStyle(
                           color: Theme.of(context).colorScheme.onSecondary,
                           fontSize: 18,
@@ -100,7 +112,28 @@ class _SettingsPageState extends State<SettingsPage> {
                   ),
                 ),
               ),
-            )
+            ),
+            const SizedBox(height: 32,),
+            Divider(thickness: 2, color: Theme.of(context).colorScheme.tertiary,),
+            const SizedBox(height: 16,),
+            Text(
+              "Change Passkey",
+              style: TextStyle(
+                color: Theme.of(context).colorScheme.tertiary,
+                fontSize: 20,
+                fontWeight: FontWeight.w800,
+              ),
+            ),
+            const SizedBox(height: 16,),
+            Text(
+              "Enter Previous Passkey",
+              style: TextStyle(
+                color: Theme.of(context).colorScheme.tertiary,
+                fontSize: 16,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+
           ],
         ),
       ),
