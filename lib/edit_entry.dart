@@ -50,7 +50,7 @@ class _EditEntryState extends State<EditEntry> {
             Navigator.pop(context);
           }, 
           icon: Icon(
-            Icons.arrow_back,
+            Icons.arrow_back_ios,
             color: Theme.of(context).colorScheme.onSecondary,
           ),
         ),

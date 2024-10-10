@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:passcodemanager/color_palette.dart';
+
 
 // ignore: must_be_immutable
 class AddEntry extends StatefulWidget {
@@ -23,7 +23,7 @@ class _AddEntryState extends State<AddEntry> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: LightModeColorPalette().backgroundColor,
+      backgroundColor: Theme.of(context).colorScheme.primary,
 
       // Appbar
       appBar: AppBar(

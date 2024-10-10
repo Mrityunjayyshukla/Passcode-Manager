@@ -18,6 +18,7 @@ class _SettingsPageState extends State<SettingsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.primary,
       // Appbar
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.secondary,
@@ -35,7 +36,7 @@ class _SettingsPageState extends State<SettingsPage> {
             Navigator.pop(context);
           },
           icon: Icon(
-            Icons.arrow_back,
+            Icons.arrow_back_ios,
             color: Theme.of(context).colorScheme.onSecondary,
           ),
         ),
