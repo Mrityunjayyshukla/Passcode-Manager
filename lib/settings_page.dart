@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:passcodemanager/password_reset.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SettingsPage extends StatefulWidget {
@@ -323,7 +324,20 @@ class _SettingsPageState extends State<SettingsPage> {
                     ),
                   ),
                 ),
-              ),
+              ),  
+              const SizedBox(height: 8,),
+              TextButton(
+                onPressed: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=> PasswordReset()));
+                }, 
+                child: Text(
+                  "Forgot Password?",
+                  style: TextStyle(
+                    color: Theme.of(context).colorScheme.secondary,
+                  ),
+                ),
+              )     
+
             ],
           ),
         ),
@@ -337,3 +351,9 @@ class _SettingsPageState extends State<SettingsPage> {
   }
 }
 
+
+
+// 1. Display an input field for the email.
+// 2. Send a 6-digit code to the entered email.
+// 3. Allow the user to enter the received code.
+// 4. If the code is correct, prompt the user to enter a new 4-digit passkey.
