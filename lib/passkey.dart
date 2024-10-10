@@ -1,9 +1,12 @@
 // ignore_for_file: must_be_immutable, prefer_typing_uninitialized_variables
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:passcodemanager/entry_details_page.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-String appPassKey = "2505";
+String appPassKey = "0000";
 
 class PasskeyBuildSheet extends StatefulWidget {
   List<Map<String, String>> records = [];
@@ -15,6 +18,7 @@ class PasskeyBuildSheet extends StatefulWidget {
 }
 
 class _PasskeyBuildSheetState extends State<PasskeyBuildSheet> {
+  
   bool isPasskey = true;
   var pin11;
   var pin12;
@@ -42,6 +46,20 @@ class _PasskeyBuildSheetState extends State<PasskeyBuildSheet> {
   void _checkValue4(val) {
     setState(() {
       pin14 = val;
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _loadPasskey();
+    
+  }
+
+  Future<void> _loadPasskey() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      appPassKey = prefs.getString('passkey') ?? appPassKey; // Default passkey
     });
   }
 
@@ -140,6 +158,10 @@ class _PasskeyBuildSheetState extends State<PasskeyBuildSheet> {
                               RecordDetailsPage(record: record)));
                 } else {
                   isPasskey = false;
+                  Navigator.pop(context);
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(content: Text("Passkey is incorrect. Try Again😊")),
+                  );
                 }
               },
               child: Text(
@@ -168,6 +190,7 @@ Widget passkeyBlock(BuildContext context, double height, double width, Function(
     height: height,
     width: width,
     child: TextFormField(
+      obscureText: false,
       cursorColor: Theme.of(context).colorScheme.secondary,
       decoration: const InputDecoration(border: InputBorder.none),
       onChanged: onChanged,
