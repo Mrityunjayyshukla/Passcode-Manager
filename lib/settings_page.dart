@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:passcodemanager/password_reset.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SettingsPage extends StatefulWidget {
@@ -325,18 +324,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   ),
                 ),
               ),  
-              const SizedBox(height: 8,),
-              TextButton(
-                onPressed: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=> PasswordReset()));
-                }, 
-                child: Text(
-                  "Forgot Password?",
-                  style: TextStyle(
-                    color: Theme.of(context).colorScheme.secondary,
-                  ),
-                ),
-              )     
+              const SizedBox(height: 8,),    
 
             ],
           ),
