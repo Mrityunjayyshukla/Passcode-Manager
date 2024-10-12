@@ -67,8 +67,8 @@ class RecordDetailsPage extends StatelessWidget {
                     "Title",
                     style: TextStyle(
                       fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: Theme.of(context).colorScheme.onSecondary,
+                      fontWeight: FontWeight.w500,
+                      color: Theme.of(context).colorScheme.onSecondaryContainer,
                     ),
                   ),
                   const SizedBox(height: 8),
@@ -76,7 +76,7 @@ class RecordDetailsPage extends StatelessWidget {
                     record['Title']!,
                     style: TextStyle(
                       fontSize: 18,
-                      fontWeight: FontWeight.w500,
+                      fontWeight: FontWeight.bold,
                       color: Theme.of(context).colorScheme.onSecondary,
                     ),
                   ),
@@ -85,8 +85,8 @@ class RecordDetailsPage extends StatelessWidget {
                     "Email or Username",
                     style: TextStyle(
                       fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: Theme.of(context).colorScheme.onSecondary,
+                      fontWeight: FontWeight.w500,
+                      color: Theme.of(context).colorScheme.onSecondaryContainer,
                     ),
                   ),
                   const SizedBox(height: 8),
@@ -94,7 +94,7 @@ class RecordDetailsPage extends StatelessWidget {
                     record['Email']!,
                     style: TextStyle(
                       fontSize: 18,
-                      fontWeight: FontWeight.w500,
+                      fontWeight: FontWeight.bold,
                       color: Theme.of(context).colorScheme.onSecondary,
                     ),
                   ),
@@ -103,8 +103,8 @@ class RecordDetailsPage extends StatelessWidget {
                     "Password",
                     style: TextStyle(
                       fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: Theme.of(context).colorScheme.onSecondary,
+                      fontWeight: FontWeight.w500,
+                      color: Theme.of(context).colorScheme.onSecondaryContainer,
                     ),
                   ),
                   const SizedBox(height: 8),
@@ -112,7 +112,7 @@ class RecordDetailsPage extends StatelessWidget {
                     record['Password']!,
                     style: TextStyle(
                       fontSize: 18,
-                      fontWeight: FontWeight.w500,
+                      fontWeight: FontWeight.bold,
                       color: Theme.of(context).colorScheme.onSecondary,
                     ),
                   ),
