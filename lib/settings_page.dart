@@ -16,7 +16,10 @@ class _SettingsPageState extends State<SettingsPage> {
   final newPasskeyController = TextEditingController();
   final confirmNewPasskeyController = TextEditingController();
   String? appPassKey; // Store the current passkey
-  
+  bool previousObscureText = true;
+  bool newObscureText = true;
+  bool confirmObscureText = true;
+
   @override
   void initState() {
     super.initState();
@@ -26,7 +29,7 @@ class _SettingsPageState extends State<SettingsPage> {
   Future<void> _loadPasskey() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
-      appPassKey = prefs.getString('passkey') ?? "2505"; // Default passkey
+      appPassKey = prefs.getString('passkey') ?? "0000"; // Default passkey
     });
   }
 
@@ -183,7 +186,7 @@ class _SettingsPageState extends State<SettingsPage> {
               const SizedBox(height: 16,),
               Container(
                 width: MediaQuery.of(context).size.width/2,
-                padding: const EdgeInsets.symmetric(horizontal: 8),
+                padding: const EdgeInsets.only(left: 16, right: 8),
                 decoration: BoxDecoration(
                   border: Border.all(
                     width: 4,
@@ -192,7 +195,6 @@ class _SettingsPageState extends State<SettingsPage> {
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: TextField(
-                  textAlign: TextAlign.center,
                   inputFormatters: [
                     FilteringTextInputFormatter.digitsOnly,
                     LengthLimitingTextInputFormatter(4), 
@@ -200,12 +202,22 @@ class _SettingsPageState extends State<SettingsPage> {
                   keyboardType: TextInputType.number,
                   cursorColor: Theme.of(context).colorScheme.secondary,
                   controller: oldPasskeyController,
-                  obscureText: true,
+                  obscureText: previousObscureText,
                   style: TextStyle(
                     color: Theme.of(context).colorScheme.tertiary,
                     fontWeight: FontWeight.w500,
                   ),
-                  decoration: const InputDecoration(
+                  decoration: InputDecoration(
+                    suffixIcon: GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          previousObscureText = !previousObscureText;
+                        });
+                      },
+                      child: previousObscureText
+                      ? Icon(Icons.visibility, color: Theme.of(context).colorScheme.tertiary,)
+                      : Icon(Icons.visibility_off, color: Theme.of(context).colorScheme.tertiary,)
+                    ),
                     border: InputBorder.none,
                   ),
                 ),
@@ -223,7 +235,7 @@ class _SettingsPageState extends State<SettingsPage> {
               const SizedBox(height: 16,),
               Container(
                 width: MediaQuery.of(context).size.width/2,
-                padding: const EdgeInsets.symmetric(horizontal: 8),
+                padding: const EdgeInsets.only(left: 16, right: 8),
                 decoration: BoxDecoration(
                   border: Border.all(
                     width: 4,
@@ -232,7 +244,6 @@ class _SettingsPageState extends State<SettingsPage> {
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: TextField(
-                  textAlign: TextAlign.center,
                   inputFormatters: [
                     FilteringTextInputFormatter.digitsOnly,
                     LengthLimitingTextInputFormatter(4), 
@@ -240,12 +251,22 @@ class _SettingsPageState extends State<SettingsPage> {
                   keyboardType: TextInputType.number,
                   cursorColor: Theme.of(context).colorScheme.secondary,
                   controller: newPasskeyController,
-                  obscureText: true,
+                  obscureText: newObscureText,
                   style: TextStyle(
                     color: Theme.of(context).colorScheme.tertiary,
                     fontWeight: FontWeight.w500,
                   ),
-                  decoration: const InputDecoration(
+                  decoration: InputDecoration(
+                    suffixIcon: GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          newObscureText = !newObscureText;
+                        });
+                      },
+                      child: newObscureText
+                      ? Icon(Icons.visibility, color: Theme.of(context).colorScheme.tertiary,)
+                      : Icon(Icons.visibility_off, color: Theme.of(context).colorScheme.tertiary,)
+                    ),
                     border: InputBorder.none,
                   ),
                 ),
@@ -262,7 +283,7 @@ class _SettingsPageState extends State<SettingsPage> {
               const SizedBox(height: 16,),
               Container(
                 width: MediaQuery.of(context).size.width/2,
-                padding: const EdgeInsets.symmetric(horizontal: 8),
+                padding: const EdgeInsets.only(left: 16, right: 8),
                 decoration: BoxDecoration(
                   border: Border.all(
                     width: 4,
@@ -271,7 +292,6 @@ class _SettingsPageState extends State<SettingsPage> {
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: TextField(
-                  textAlign: TextAlign.center,
                   inputFormatters: [
                     FilteringTextInputFormatter.digitsOnly,
                     LengthLimitingTextInputFormatter(4), 
@@ -279,12 +299,22 @@ class _SettingsPageState extends State<SettingsPage> {
                   keyboardType: TextInputType.number,
                   cursorColor: Theme.of(context).colorScheme.secondary,
                   controller: confirmNewPasskeyController,
-                  obscureText: true,
+                  obscureText: confirmObscureText,
                   style: TextStyle(
                     color: Theme.of(context).colorScheme.tertiary,
                     fontWeight: FontWeight.w500,
                   ),
-                  decoration: const InputDecoration(
+                  decoration: InputDecoration(
+                    suffixIcon: GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          confirmObscureText = !confirmObscureText;
+                        });
+                      },
+                      child: confirmObscureText
+                      ? Icon(Icons.visibility, color: Theme.of(context).colorScheme.tertiary,)
+                      : Icon(Icons.visibility_off, color: Theme.of(context).colorScheme.tertiary,)
+                    ),
                     border: InputBorder.none,
                   ),
                 ),
