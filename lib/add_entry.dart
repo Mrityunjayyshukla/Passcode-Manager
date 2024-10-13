@@ -37,7 +37,7 @@ class _AddEntryState extends State<AddEntry> {
             color: Theme.of(context).colorScheme.onSecondary,
           ),
         ),
-        leading: IconButton(onPressed: () => Navigator.pop(context), icon: Icon(Icons.arrow_back, color: Theme.of(context).colorScheme.onSecondary,)),
+        leading: IconButton(onPressed: () => Navigator.pop(context), icon: Icon(Icons.arrow_back_ios, color: Theme.of(context).colorScheme.onSecondary,)),
       ),
 
       // Body
